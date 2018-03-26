@@ -3,6 +3,7 @@
   text-align: center;
   font-size: 30px
 }
+
 .loginHeader p {
   position: relative;
   text-align: center;
@@ -13,17 +14,16 @@
 
 .loginForm {
   text-align: center;
+  position: relative;
 }
+
 .loginButton {
   padding-top: 30px
 }
 .loginHeader {
   margin-top: 50px
 }
-.loginBackground {
-  background-image: url(../../public/images/loginBackground.svg)
-}
-.loginForm {
-  position: relative;
-  top: -150px
+.container {
+  display: grid;
+  background-image: url(../../public/images/loginBackground.svg);
 }
