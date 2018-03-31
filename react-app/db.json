@@ -1,0 +1,23 @@
+{
+  "login": {
+    "nameHelper": "fetch name",
+    "pwdHelper": "no submitClick"
+  },
+  "items": [
+    {
+      "name": "dcc",
+      "isComplete": true,
+      "id": 1
+    },
+    {
+      "name": "345",
+      "isComplete": false,
+      "id": 2
+    },
+    {
+      "name": "678",
+      "isComplete": false,
+      "id": 3
+    }
+  ]
+}

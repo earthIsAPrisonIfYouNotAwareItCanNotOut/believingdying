@@ -1,33 +1,37 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { Form } from 'antd'
-import LoginHeader from './LoginHeader'
-import LoginNameTextField from './LoginNameTextField'
-import LoginPasswordTextField from './LoginPasswordTextField'
-import LoginSubmitButton from './LoginSubmitButton'
-import './loginForm.css'
+import React, {Component} from 'react'
+import {connect} from 'react-redux'
+import { saveItem, updateCurrent } from '../../reducers/login'
 
-// const server = 'http://116.62.161.217/member.ashx?op=login&key=hl_123&ucode=HuYX&pswd=123'
-
-class LoginForm extends React.Component {
+// 20. add login form for saveLogin reducer
+class LoginForm extends Component {
+  handleInputChange = (evt) => {
+    const val = evt.target.value
+    // console.log(val)
+    this.props.updateCurrent(val)
+  }
+  handleSubmit = (evt) => {
+    evt.preventDefault()
+    this.props.saveItem(this.props.currentItem)
+  }
   render() {
     return (
-      <div className="container">
-          <LoginHeader />
-          <form className="loginForm">
-            <div>
-              <LoginNameTextField />
-            </div>
-            <div>
-              <LoginPasswordTextField />
-            </div>
-            <div className="loginButton" >
-              <LoginSubmitButton htmltype="submit"/>
-            </div>
-          </form>
-      </div>
-    );
+      <form onSubmit={this.handleSubmit}>
+        <input type="text"
+               onChange={this.handleInputChange}
+               value={this.props.currentItem}/>
+      </form>
+    )
   }
 }
 
-export default LoginForm
+// mapStateToProps is a function get store's state and return specific props
+//   (state) => state
+// mapDispatchtoProps automaticly dispatch action
+//   {action}
+
+// use the combineReducers
+// we need refector our code state.currentItem => state.login.currentItem
+export default connect(
+  (state) => ({currentItem: state.login.currentItem}),
+  {updateCurrent, saveItem}
+)(LoginForm)

@@ -4,16 +4,28 @@
   "private": true,
   "dependencies": {
     "antd": "^3.3.3",
+    "enzyme": "^3.3.0",
+    "json-server": "^0.12.1",
     "material-ui": "^1.0.0-beta.38",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-redux": "^5.0.7",
     "react-router": "^4.2.0",
-    "react-scripts": "1.1.1"
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.1.1",
+    "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "json-server --static ./build db.json",
+    "dev": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "_comment": "9. run json-server as `npm run dev-server`",
+    "dev-server": "json-server -p 8080 db.json"
+  },
+  "devDependencies": {
+    "redux-devtools-extension": "^2.13.2"
   }
 }
