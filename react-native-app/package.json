@@ -1,10 +1,10 @@
 {
-  "name": "react-native-app",
+  "name": "testapp",
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
+    "react-native-scripts": "1.13.1",
     "jest-expo": "26.0.0",
-    "react-native-scripts": "^1.13.1",
     "react-test-renderer": "16.3.0-alpha.1"
   },
   "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
@@ -22,11 +22,6 @@
     "expo": "^26.0.0",
     "react": "16.3.0-alpha.1",
     "react-native": "0.54.0",
-    "react-native-scrollable-tab-view": "^0.8.0",
-    "react-navigation": "^1.5.9",
-    "react-redux": "^5.0.7",
-    "redux": "^3.7.2",
-    "redux-thunk": "^2.2.0",
-    "remote-redux-devtools": "^0.5.12"
+    "react-navigation": "^1.5.11"
   }
 }
