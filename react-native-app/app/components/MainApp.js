@@ -1,18 +1,12 @@
 import React, { Component } from 'react'
-import { PermissionStack, MainBottomTab } from '../lib/navigation'
-// import { PermissionStack } from './PermissionScreen'
-// import { connect } from 'react-redux'
+import { MainStack } from '../lib/navigation'
 
 class MainApp extends Component {
   render() {
     return (
-      <MainBottomTab />
+      <MainStack />
     )
   }
 }
 
 export default MainApp
-
-// export default connect(
-  // (state) => ({tintColor: state.login.tintColor})
-// )(MainApp)

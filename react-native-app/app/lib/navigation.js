@@ -1,29 +1,22 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { StackNavigator, TabNavigator } from 'react-navigation'
+import { StackNavigator, TabNavigator, TabBarBottom } from 'react-navigation'
 import Icon from 'react-native-vector-icons/FontAwesome'
-import PermissionScreen from '../components//PermissionScreen'
-import PermissionDetailScreen from '../components/PermissionDetailScreen'
+import StockScreen from '../components//StockScreen'
 import LoginScreen from '../components/LoginScreen'
 
-export const PermissionStack = StackNavigator(
+export const StockStack = StackNavigator(
   {
-    Permission: {
-      screen: PermissionScreen
-    },
-    Detail: {
-      screen: PermissionDetailScreen
+    Stock: {
+      screen: StockScreen
     }
-  },
-  {
-    initialRouteName: 'Permission'
   }
 )
 
-export const MainBottomTab = TabNavigator(
+export const MainStack = TabNavigator(
   {
-    Permission: {
-      screen: PermissionStack,
+    Stock: {
+      screen: StockStack,
       navigationOptions: {
         tabBarLabel: '权限',
         tabBarIcon: ({ tintColor }) => <Icon name="th" size={25} color={tintColor} />
@@ -38,15 +31,13 @@ export const MainBottomTab = TabNavigator(
     }
   },
   {
-    tabBarPosition: 'bottom'
+    tabBarOptions: {
+      activeTintColor: '#be2133',
+      inactiveTintColor: 'gray'
+    },
+    tabBarComponent: TabBarBottom,
+    tabBarPosition: 'bottom',
+    animationEnabled: false,
+    swipeEnabled: false
   }
 )
-
-export const Root = StackNavigator({
-  Tab: {
-    screen: MainBottomTab
-  },
-  Permission: {
-    screen: PermissionScreen
-  }
-})
