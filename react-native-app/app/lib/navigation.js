@@ -5,18 +5,10 @@ import Icon from 'react-native-vector-icons/FontAwesome'
 import StockScreen from '../components//StockScreen'
 import LoginScreen from '../components/LoginScreen'
 
-export const StockStack = StackNavigator(
-  {
-    Stock: {
-      screen: StockScreen
-    }
-  }
-)
-
 export const MainStack = TabNavigator(
   {
     Stock: {
-      screen: StockStack,
+      screen: StockScreen,
       navigationOptions: {
         tabBarLabel: '权限',
         tabBarIcon: ({ tintColor }) => <Icon name="th" size={25} color={tintColor} />
