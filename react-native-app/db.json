@@ -1,0 +1,42 @@
+{
+  "stock": [
+    {
+      "scope": "所属范围1",
+      "brand": "品牌1",
+      "quality": "产品档次1",
+      "coding": "产品编码1",
+      "name": "产品名称1",
+      "department": "单位1",
+      "batch": "批次1",
+      "votable": "可开票数1",
+      "inventory": "占库数1",
+      "freeze": "冻结数1",
+      "total": "总数1",
+      "transmit": "在途数1",
+      "request": "采购申请数1",
+      "price": "标价1",
+      "singleWeight": "只重1",
+      "totalWeight": "总重1",
+      "package": "包装数1"
+    },
+    {
+      "scope": "所属范围2",
+      "brand": "品牌2",
+      "quality": "产品档次2",
+      "coding": "产品编码2",
+      "name": "产品名称2",
+      "department": "单位2",
+      "batch": "批次2",
+      "votable": "可开票数2",
+      "inventory": "占库数2",
+      "freeze": "冻结数2",
+      "total": "总数2",
+      "transmit": "在途数2",
+      "request": "采购申请数2",
+      "price": "标价2",
+      "singleWeight": "只重2",
+      "totalWeight": "总重2",
+      "package": "包装数2"
+    }
+  ]
+}
