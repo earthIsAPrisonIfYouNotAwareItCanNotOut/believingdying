@@ -1,31 +1,24 @@
 {
-  "name": "react-app2",
+  "name": "react-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "antd": "^3.3.3",
-    "enzyme": "^3.3.0",
+    "@material-ui/icons": "^1.0.0-beta.42",
     "json-server": "^0.12.1",
-    "material-ui": "^1.0.0-beta.38",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
+    "material-ui": "^1.0.0-beta.42",
+    "react": "^16.3.1",
+    "react-dom": "^16.3.1",
     "react-redux": "^5.0.7",
-    "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
-    "react-scripts": "1.1.1",
-    "redux": "^3.7.2",
-    "redux-thunk": "^2.2.0"
+    "react-scripts": "1.1.4",
+    "redux": "^4.0.0",
+    "redux-thunk": "^2.2.0",
+    "styled-components": "^3.2.6"
   },
   "scripts": {
-    "start": "json-server --static ./build db.json",
-    "dev": "react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "_comment": "9. run json-server as `npm run dev-server`",
-    "dev-server": "json-server -p 8080 db.json"
-  },
-  "devDependencies": {
-    "redux-devtools-extension": "^2.13.2"
+    "eject": "react-scripts eject"
   }
 }
