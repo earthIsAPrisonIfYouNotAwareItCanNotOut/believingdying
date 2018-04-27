@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import styled from 'styled-components'
 import Card, { CardContent } from 'material-ui/Card'
 import { withStyles } from 'material-ui/styles'
 

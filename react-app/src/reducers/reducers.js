@@ -1,34 +1,33 @@
-import { loginFetch } from '../lib/loginServices'
+import { loginFetch } from '../lib/Services'
 
 const initState = {
+  title: ''
 }
 
 export const LOGIN_SUBMIT = 'LOGIN_SUBMIT'
-export const loginSubmit = (payload) => ({type: LOGIN_SUBMIT, payload: payload})
-
-export const SIDELIST_ONCLICK = 'SIDELIST_ONCLICK'
-export const sideListOnclick = (page) => ({tyle: SIDELIST_ONCLICK, page: page})
-export const changePage = (page) => {
-  return (dispatch) => {
-    dispatch(sideListOnclick(page))
-  }
-}
-
-// 13. create login fetch action
-export const loginFetchSubmit = (user) => {
+export const commitLogin = (route) => ({type: LOGIN_SUBMIT, payload: route})
+export const fetchLogin = (role) => {
   return(dispatch) => {
-    loginFetch(user)
-      .then(path => dispatch(loginSubmit(path)))
+    loginFetch(role)
+      .then(route => dispatch(commitLogin(route)))
   }
 }
 
-export default function (state = initState, action) {
+export const TITLE_CHANGE = 'TITLE_CHANGE'
+export const changeTitle = (title) => ({type: TITLE_CHANGE, payload: title})
+export const ROUTE_CHANGE = 'ROUTE_CHANGE'
+export const changeRoute = (route) => ({type: ROUTE_CHANGE, payload: route})
+
+const reducers = (state = initState, action) => {
   switch (action.type) {
     case LOGIN_SUBMIT:
       return {...state, ...action.payload}
-    case SIDELIST_ONCLICK:
-      return {...state, title: action.page.title}
+    case TITLE_CHANGE:
+      return {...state, title: action.payload}
+    case ROUTE_CHANGE:
+      return {...state, route: action.payload}
     default:
       return state
   }
 }
+export default reducers

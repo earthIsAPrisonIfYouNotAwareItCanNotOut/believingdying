@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-import styled from 'styled-components'
 
-class MainApp extends Component {
+class HomeApp extends Component {
   render() {
     return (
       <div>
@@ -11,4 +10,4 @@ class MainApp extends Component {
   }
 }
 
-export default MainApp
+export default HomeApp
