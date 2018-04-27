@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Provider } from 'react-redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import thunk from 'redux-thunk'
+import throttle from 'lodash/throttle'
 
 import reducers from './reducers/reducers'
 import { loadState, saveState } from './localStorage'
@@ -25,9 +26,11 @@ const store = createStore(
   )
 )
 
-store.subscribe(() => {
-  saveState(store.getState())
-})
+store.subscribe(throttle(() => {
+  saveState(
+    store.getState()
+  )
+}, 1000))
 
 ReactDOM.render(
   <Provider store={store}>
