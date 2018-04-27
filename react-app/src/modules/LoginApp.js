@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
-import { changeTitle } from '../reducers/reducers'
+import { changeTitle } from '../reducers/persistReducer'
 
 import { FlexContainerCenterColumn } from '../components/div/Container'
 import { LoginTextField } from '../components/textField/TextField'

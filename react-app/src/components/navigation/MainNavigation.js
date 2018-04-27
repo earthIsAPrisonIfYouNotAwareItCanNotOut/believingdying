@@ -6,7 +6,7 @@ import Drawer from 'material-ui/Drawer'
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 
-import { changeTitle, changeRoute } from '../../reducers/reducers'
+import { changeTitle, changeRoute } from '../../reducers/persistReducer'
 
 import { AppBarContainer } from '../div/Container'
 import { NavigationTitleWrapper } from '../div/Wrapper'
@@ -60,7 +60,7 @@ class MainNavigation extends Component {
 
 export default connect(
   (state) => ({
-    title: state.title
+    title: state.persist.title
   }),
   {}
 )(MainNavigation)

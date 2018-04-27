@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
-import { changeTitle, changeRoute } from '../../reducers/reducers'
+import { changeTitle, changeRoute } from '../../reducers/persistReducer'
 
 import List, { ListItem, ListItemText } from 'material-ui/List'
 import { ListWrapper } from '../div/Wrapper'
