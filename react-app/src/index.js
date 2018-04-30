@@ -12,6 +12,8 @@ import throttle from 'lodash/throttle'
 
 import loginReducer from './reducers/loginReducer'
 import persistReducer from './reducers/persistReducer'
+import stockReducer from './reducers/stockReducer'
+
 import { loadState, saveState } from './localStorage'
 
 import IndexApp from './modules/IndexApp';
@@ -23,6 +25,7 @@ const persistedState = loadState()
 const store = createStore(
   combineReducers({
     login: loginReducer,
+    stock: stockReducer,
     persist: persistReducer
   }),
   persistedState,
@@ -32,9 +35,9 @@ const store = createStore(
 )
 
 store.subscribe(throttle(() => {
-  saveState(
-    store.getState()
-  )
+  saveState({
+    persist: store.getState().persist
+  })
 }, 1000))
 
 ReactDOM.render(

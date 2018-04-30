@@ -12,6 +12,4 @@ export const SubtitleText = styled.h5`
   color: #9e9e9e;
 `
 export const NavigationTitle = styled(Typography)`
-  flex: 1;
-  margin-left: 20px;
 `

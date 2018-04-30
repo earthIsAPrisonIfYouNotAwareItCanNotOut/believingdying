@@ -6,18 +6,31 @@ import Drawer from 'material-ui/Drawer'
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 
-import { changeTitle, changeRoute } from '../../reducers/persistReducer'
+import { toggleSearchBar } from '../../reducers/persistReducer'
+import { toggleClearIconButton } from '../../reducers/stockReducer'
 
 import { AppBarContainer } from '../div/Container'
-import { NavigationTitleWrapper } from '../div/Wrapper'
-import { MenuIconButton } from '../button/Icon'
+import {
+  MenuIconButtonWrapper, NavigationTitleWrapper,
+  SearchIconButtonWrapper, SearchTextFieldWrapper
+} from '../div/Wrapper'
+import {
+  MenuIconButton, SearchIconButton, KeyboardBackspaceIconButton, ClearIconButton
+} from '../button/Icon'
 import { NavigationTitle } from '../text/Text'
+import { oceanLightBlue } from '../color/color'
+import { SearchTextField } from '../textField/TextField'
 
 import SideList from '../list/SideList'
 
-const MainAppBar = styled(AppBar)`
-  display: flex;
-  flexDirection: row;
+const MainAppBar = styled(AppBar).attrs({
+  backgroundColor: props => props.backgroundColor
+})`
+  && {
+    display: flex;
+    flexDirection: row;
+    background-color: ${props => props.backgroundColor};
+  }
 `
 
 class MainNavigation extends Component {
@@ -29,18 +42,65 @@ class MainNavigation extends Component {
       [side]: open
     })
   }
+  toggleSearchBar(toggle) {
+    this.props.toggleClearIconButton(false)
+    this.props.toggleSearchBar(toggle)
+  }
+  updateInputValue(evt) {
+    this.setState({
+      inputValue: evt.target.value
+    })
+    this.state.inputValue === ''
+      ? this.props.toggleClearIconButton(false)
+      : this.props.toggleClearIconButton(true)
+  }
+  clearSearchBarValue() {
+    this.setState({
+      inputValue: ''
+    })
+    this.props.toggleClearIconButton(false)
+  }
   render() {
-    const { title } = this.props
+    const { title, searchBar, clearIconButton } = this.props
     return (
       <div>
-        <MainAppBar position="static" style={{backgroundColor: '#2196F3'}}>
+        <MainAppBar
+          position="static"
+          backgroundColor={ searchBar ? 'white' : oceanLightBlue}>
           <Toolbar>
-            <MenuIconButton onClick={this.toggleDrawer('left', true)} />
+            <MenuIconButtonWrapper>
+              { searchBar
+                ? <KeyboardBackspaceIconButton
+                      onClick={() => this.toggleSearchBar(false)}/>
+                : <MenuIconButton onClick={this.toggleDrawer('left', true)}/>
+              }
+            </MenuIconButtonWrapper>
             <NavigationTitleWrapper>
-              <NavigationTitle variant="title" color="inherit">
-                {title}
-              </NavigationTitle>
+              {
+                searchBar
+                ? <SearchTextFieldWrapper>
+                    <SearchTextField
+                        value={this.state.inputValue}
+                        placeholder="请输入产品编码"
+                        onChange={evt => this.updateInputValue(evt)}/>
+                  </SearchTextFieldWrapper>
+                : <NavigationTitle variant="title" color="inherit">
+                    {title}
+                  </NavigationTitle>
+              }
             </NavigationTitleWrapper>
+            <SearchIconButtonWrapper>
+              {
+                searchBar
+                  ? ''
+                  : <SearchIconButton
+                        onClick={() => this.toggleSearchBar(true)}/>
+              }
+              {
+                clearIconButton && <ClearIconButton
+                                       onClick={() => this.clearSearchBarValue()}/>
+              }
+            </SearchIconButtonWrapper>
           </Toolbar>
         </MainAppBar>
         <Drawer open={this.state.left} onClose={this.toggleDrawer('left', false)}>
@@ -50,7 +110,7 @@ class MainNavigation extends Component {
             onClick={this.toggleDrawer('left', false)}
             onKeyDown={this.toggleDrawer('left', false)}
             >
-            <SideList />
+            <SideList/>
           </div>
         </Drawer>
       </div>
@@ -60,7 +120,9 @@ class MainNavigation extends Component {
 
 export default connect(
   (state) => ({
-    title: state.persist.title
+    title: state.persist.title,
+    searchBar: state.persist.searchBar,
+    clearIconButton: state.stock.clearIconButton
   }),
-  {}
+  {toggleSearchBar, toggleClearIconButton}
 )(MainNavigation)
